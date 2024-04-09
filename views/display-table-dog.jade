@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  table.table.table-bordered
+    thead
+      tr
+        th(scope='col') Id
+        th(scope='col') Name 
+        th(scope='col') Breed 
+        th(scope='col') Age 
+        th(scope='col') Friendliness
+        th(scope='col') Delete
+        th(scope='col') Edit 
+    tbody
+      each dog in data
+        tr
+          th(scope='row')= dog.Id
+          td= dog.Name
+          td= dog.Breed
+          td= dog.Age
+          td= dog.Friendliness
+          td(style = 'text-align: center;')
+            a(href='/delete-dog/' + dog.Id) Delete
+          td(style = 'text-align: center;')
+            a(href='/edit-dog/' + dog.Id) Edit
+
+  //- div.delete-div
+  //-   div.delete-wrapper
+  //-     p.delete-p
+  //-      | Delete a table row with an 
+  //-      span(style="font-weight: bold;") Id 
+  //-      | of: 
+  //-     input(type='number' id = 'delete-input')
+  //-   form#delete-form(action="", method="POST")
+  //-       button#delete-button(type="submit") Delete 
+
+        

@@ -1,0 +1,106 @@
+body {
+	padding: 50px;
+	font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+a {
+	color: #00b7ff;
+}
+
+.nav-link {
+	font-size: 28px;
+}
+
+.navbar {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+
+.home-heading{
+	margin-top: 60px;
+}
+
+#add-pet-heading {
+	margin-top: 50px;
+}
+
+.add-pet-label {
+	display: block;
+	margin-bottom: 5px;
+	font-size: 20px;
+}
+
+.add-pet-options {
+	font-size: 18px;
+}
+
+.add-pet-input, #add-pet-select{
+	margin-top: 7px;
+	margin-bottom: 10px;
+	padding: 3px;
+	font-size: 18px;
+}
+
+#add-pet-submit {
+	margin-top: 10px;
+	font-size: 18px;
+	padding: 6px;
+}
+
+.hidden{
+	display: none;
+}
+
+.table{
+	margin-top: 40px;
+	width: 40%;
+	font-size: 18px;
+	margin-left: auto; 
+	margin-right: auto;
+
+}
+
+th{
+	text-align: center;
+}
+
+td a{
+	color: inherit;
+	text-decoration: inherit;
+	font-weight: bold;
+}
+
+/* .delete-div{
+	font-size: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	width: 40%;
+	display: flex;
+	align-items:center;
+	flex-direction: column;
+}
+
+#delete-input{
+	margin-left:20px;
+}
+
+.delete-p{
+	margin: 0;
+}
+
+.delete-wrapper{
+	display: flex;
+	align-items: center;
+	margin-bottom: 25px
+}
+
+#delete-button {
+	padding: 15px 25px;
+	font-size: 19px;
+	border-radius: 5px;
+	cursor: pointer;
+  } */
