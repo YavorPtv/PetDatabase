@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const mysql = require('mysql2');
 
-const { cats, dogs } = require('../models').sequelize.models;
+const { animals } = require('../models').sequelize.models;
 
 router.get('/home', function (req, res, next) {
 	res.render('home');
@@ -12,22 +12,11 @@ router.get('/pets/new', function (req, res, next) {
 	res.render('new-pet');
 });
 
-router.get('/pets/dogs/show-all', async (req, res, next) => {
+router.get('/pets/show-all', async (req, res, next) => {
 	try {
-		const allDogs = await dogs.findAll();
-		console.log('Data from dogs table:', allDogs);
-		res.render('display-table-dog', { data: allDogs });
-	} catch (error) {
-		console.error('Error interacting with the database:', error);
-		res.status(500).send('Error interacting with the database');
-	}
-});
-
-router.get('/pets/cats/show-all', async (req, res, next) => {
-	try {
-		const allCats = await cats.findAll();
-		console.log('Data from cats table:', allCats);
-		res.render('display-table-cat', { data: allCats });
+		const allAnimals = await animals.findAll();
+		console.log('Data from dogs table:', allAnimals);
+		res.render('display-table-animals', { data: allAnimals });
 	} catch (error) {
 		console.error('Error interacting with the database:', error);
 		res.status(500).send('Error interacting with the database');
