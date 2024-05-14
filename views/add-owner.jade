@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+    .main-content
+        form(action = '/owners/new' method='POST')
+            div
+                label.add-animal-label Name: 
+                input.add-animal-input(name = 'name')
+                br
+                label.add-animal-label Age: 
+                input.add-animal-input(name = 'age')
+                br
+                label.add-animal-label City: 
+                input.add-animal-input(name = 'city')
+                br
+                input(type = 'submit')

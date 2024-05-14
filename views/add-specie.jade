@@ -1,0 +1,10 @@
+extends layout 
+
+block content 
+    .main-content
+        form(action = '/species/new' method='POST')
+            div
+                label.add-animal-label Name: 
+                input.add-animal-input(name = 'name')
+                br
+                input(type = 'submit')

@@ -1,0 +1,25 @@
+extends layout 
+
+block content 
+    .main-content
+        form(action = '/animals/new' method='POST')
+            div
+                label.add-animal-label Name: 
+                input.add-animal-input(name = 'name')
+                br
+                label.add-animal-label SpeciesId: 
+                input.add-animal-input(name = 'speciesId')
+                br
+                label.add-animal-label OwnerId: 
+                input.add-animal-input(name = 'ownerId')
+                br
+                label.add-animal-label Breed: 
+                input.add-animal-input(name = 'breed')
+                br
+                label.add-animal-label Age: 
+                input.add-animal-input(name = 'age')
+                br
+                label.add-animal-label Colour: 
+                input.add-animal-input(name = 'colour')
+                br
+                input(type = 'submit')

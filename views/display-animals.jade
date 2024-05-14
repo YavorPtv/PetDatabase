@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  table.table.table-bordered
+    thead.table-light
+      tr
+        th(scope='col') #
+        th(scope='col') Name
+        th(scope='col') SpeciesId
+        th(scope='col') OwnerId
+        th(scope='col') Breed
+        th(scope='col') Age
+        th(scope='col') Colour
+        th(scope='col') Delete
+        th(scope='col') Edit
+    tbody
+      each animal in data
+        tr
+          th(scope='row')= animal.Id
+          td= animal.Name
+          td= animal.SpeciesId
+          td= animal.OwnerId
+          td= animal.Breed
+          td= animal.Age
+          td= animal.Colour
+          td(style = 'text-align: center;')
+            a(href='/animals/' + animal.Id + '/delete') Delete
+          td(style = 'text-align: center;')
+            a(href='/animals/' + animal.Id + '/edit') Edit

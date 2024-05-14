@@ -1,0 +1,10 @@
+extends layout
+
+block content 
+    .main-content
+        form(action = '/species/' + data[0].Id + '/edit' method='POST')
+            div
+                label.add-animal-label Name: 
+                input.add-animal-input(name = 'name' value = data[0].Name)
+                br
+                input(type = 'submit')

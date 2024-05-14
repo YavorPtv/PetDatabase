@@ -1,16 +1,25 @@
 extends layout
 
-block content
-    h1(id = 'add-pet-heading') Edit data for Cat
-    form(action='/edit-cat/' + cat.Id, method='post')
-        div(id = 'catDetails')
-          label(for='catName' class = 'add-pet-label') Pet Name:
-          input(type='text', name='catName', class = 'add-pet-input' value=cat.Name)
-          br
-          label(for='catAge' class = 'add-pet-label') Pet Age:
-          input(type='number', name='catAge', class = 'add-pet-input' value=cat.Age)
-          br
-          label(for='catColour' class = 'add-pet-label') Pet Colour(1-10):
-          input(type='text', name='catColour', class = 'add-pet-input' value=cat.Colour)
-
-        input(type='submit', id='add-pet-submit' value='Submit')
+block content 
+    .main-content
+        form(action = '/animals/' + data[0].Id + '/edit' method='POST')
+            div
+                label.add-animal-label Name: 
+                input.add-animal-input(name = 'name' value = data[0].Name)
+                br
+                label.add-animal-label SpeciesId: 
+                input.add-animal-input(name = 'speciesId' value = data[0].SpeciesId)
+                br
+                label.add-animal-label OwnerId: 
+                input.add-animal-input(name = 'ownerId' value = data[0].OwnerId)
+                br
+                label.add-animal-label Breed: 
+                input.add-animal-input(name = 'breed' value = data[0].Breed)
+                br
+                label.add-animal-label Age: 
+                input.add-animal-input(name = 'age' value = data[0].Age)
+                br
+                label.add-animal-label Colour: 
+                input.add-animal-input(name = 'colour' value = data[0].Colour)
+                br
+                input(type = 'submit')

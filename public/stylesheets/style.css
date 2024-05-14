@@ -1,5 +1,4 @@
 body {
-	padding: 50px;
 	font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
@@ -12,7 +11,6 @@ a {
 }
 
 .navbar {
-	position: fixed;
 	width: 100%;
 	top: 0;
 	left: 0;
@@ -23,11 +21,11 @@ a {
 	margin-top: 60px;
 }
 
-#add-pet-heading {
+#enter-data-heading {
 	margin-top: 50px;
 }
 
-.add-pet-label {
+.add-animal-label {
 	display: block;
 	margin-bottom: 5px;
 	font-size: 20px;
@@ -37,7 +35,7 @@ a {
 	font-size: 18px;
 }
 
-.add-pet-input, #add-pet-select{
+.add-animal-input, #add-pet-select{
 	margin-top: 7px;
 	margin-bottom: 10px;
 	padding: 3px;
@@ -56,7 +54,7 @@ a {
 
 .table{
 	margin-top: 40px;
-	width: 40%;
+	width: 60%;
 	font-size: 18px;
 	margin-left: auto; 
 	margin-right: auto;
@@ -72,34 +70,8 @@ td a{
 	font-weight: bold;
 }
 
-/* .delete-div{
-	font-size: 25px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 50px;
-	width: 40%;
-	display: flex;
-	align-items:center;
-	flex-direction: column;
+.main-content {
+	margin-top: 30px;
+	margin-left: 5%;
+	margin-right: 5%;
 }
-
-#delete-input{
-	margin-left:20px;
-}
-
-.delete-p{
-	margin: 0;
-}
-
-.delete-wrapper{
-	display: flex;
-	align-items: center;
-	margin-bottom: 25px
-}
-
-#delete-button {
-	padding: 15px 25px;
-	font-size: 19px;
-	border-radius: 5px;
-	cursor: pointer;
-  } */
