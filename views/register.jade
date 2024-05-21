@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  .main-content
+    form(action='/auth/register' method='POST')
+      div
+        label Username:
+        input(type='text' name='username' required)
+        br
+        label Password:
+        input(type='password' name='password' required)
+        br
+        input(type='submit' value='Register')

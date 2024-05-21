@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const db = require('../models/index');
-
+const ensureAuthenticated = require('../middleware/auth');
 
 router.get('/', async (req, res, next) => {
 	try{
@@ -15,11 +15,11 @@ router.get('/', async (req, res, next) => {
     
 });
 
-router.get('/new', function (req, res, next) {
+router.get('/new', ensureAuthenticated, function (req, res, next) {
 	res.render('add-owner');
 });
 
-router.post('/new', function (req, res, next) {
+router.post('/new', ensureAuthenticated, function (req, res, next) {
     // Example of adding a new animal
     db.owners.create({
         Name: req.body.name,
@@ -43,7 +43,7 @@ router.get('/:id', async (req, res, next) => {
 	res.render('display-owners', {data: owner});
 });
 
-router.get('/:id/edit', async (req, res, next) => {
+router.get('/:id/edit', ensureAuthenticated, async (req, res, next) => {
 	const ownerId = req.params.id;
 
 	const owner = await db.owners.findAll({
@@ -54,7 +54,7 @@ router.get('/:id/edit', async (req, res, next) => {
 	res.render('edit-owner', {data: owner});
 });
 
-router.post('/:id/edit', async (req, res, next) => {
+router.post('/:id/edit', ensureAuthenticated, async (req, res, next) => {
 	try {
 		const { name, age, city } = req.body;
 
@@ -77,7 +77,7 @@ router.post('/:id/edit', async (req, res, next) => {
 /**
  * Delete an animal
  */
-router.get('/:id/delete', async (req, res, next) =>{
+router.get('/:id/delete', ensureAuthenticated, async (req, res, next) =>{
     await db.owners.destroy({
 		where:{
 			Id: req.params.id,

@@ -10,19 +10,4 @@ router.get('/home', function (req, res, next) {
 	res.render('home');
 });
 
-router.get('/pets/new', function (req, res, next) {
-	res.render('new-pet');
-});
-
-router.get('/species/show-all', async (req, res, next) => {
-	try {
-		const allSpecies = await species.findAll();
-		console.log('Data from species table:', allSpecies);
-		res.render('display-table-species', { data: allSpecies });
-	} catch (error) {
-		console.error('Error interacting with the database:', error);
-		res.status(500).send('Error interacting with the database');
-	}
-});
-
 module.exports = router;
