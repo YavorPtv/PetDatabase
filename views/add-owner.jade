@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  .container.mt-5
+    .row.justify-content-center
+      .col-md-8
+        .card
+          .card-header.text-center
+            h2.display-4 Add New Owner
+          .card-body
+            form(action='/owners/new' method='POST')
+              .form-group
+                label(for='name').h5.mt-2 Name:
+                input.form-control#name(name='name' required)
+              .form-group
+                label(for='age').h5.mt-2 Age:
+                input.form-control#age(name='age' type='number' min='0' required)
+              .form-group
+                label(for='city').h5.mt-2 City:
+                input.form-control#city(name='city' required)
+              .form-group.text-center
+                input.btn.btn-primary.btn-lg.mt-3(type='submit' value='Add Owner')

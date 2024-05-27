@@ -1,36 +1,29 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('dogs', {
+  return sequelize.define('users', {
     Id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    Name: {
-      type: DataTypes.TEXT,
-      allowNull: false
-    },
-    Breed: {
-      type: DataTypes.TEXT,
-      allowNull: false
-    },
-    Age: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    Friendliness: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    PersonId: {
-      type: DataTypes.INTEGER,
+    Username: {
+      type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 0
+      unique: true
+    },
+    Password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Role: { // Add this field
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'user' // Default role is 'user'
     }
   }, {
     sequelize,
-    tableName: 'dogs',
+    tableName: 'users',
     timestamps: false,
     indexes: [
       {
@@ -41,6 +34,14 @@ module.exports = function(sequelize, DataTypes) {
           { name: "Id" },
         ]
       },
+      {
+        name: "username",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "Username" },
+        ]
+      }
     ]
   });
 };

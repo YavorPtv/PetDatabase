@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  table.table.table-bordered
+    thead.table-light
+      tr
+        th(scope='col') #
+        th(scope='col') Name
+        th(scope='col' colspan='2' style='text-align: center;') Actions
+    tbody
+      each specie in data
+        tr
+          th(scope='row')= specie.Id
+          td= specie.Name
+          td(style = 'text-align: center;')
+            a(href='/species/' + specie.Id + '/delete') Delete
+          td(style = 'text-align: center;')
+            a(href='/species/' + specie.Id + '/edit') Edit

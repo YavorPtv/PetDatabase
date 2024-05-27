@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  .container.mt-5
+    .row.justify-content-center
+      .col-md-8
+        .card
+          .card-header.text-center
+            h2.display-5 Add New Animal
+          .card-body
+            form(action='/animals/new' method='POST')
+              .form-group
+                label(for='name').h5 Name:
+                input.form-control#name(name='name' required)
+              .form-group
+                label(for='speciesId').h5.mt-2 Species:
+                select.form-control#speciesId(name='speciesId' required)
+                  each species in speciesList
+                    option(value=`${species.Id}`)= species.Name
+              .form-group
+                label(for='ownerId').h5.mt-2 Owner:
+                select.form-control#ownerId(name='ownerId' required)
+                  each owner in ownersList
+                    option(value=`${owner.Id}`)= owner.Name
+              .form-group
+                label(for='breed').h5.mt-2 Breed:
+                input.form-control#breed(name='breed')
+              .form-group
+                label(for='age').h5.mt-2 Age:
+                input.form-control#age(name='age' type='number' min='0')
+              .form-group
+                label(for='colour').h5.mt-2 Colour:
+                input.form-control#colour(name='colour')
+              .form-group.text-center
+                input.btn.btn-primary.btn-lg.mt-3(type='submit' value='Add Animal')
