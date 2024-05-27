@@ -1,10 +1,16 @@
 extends layout
 
 block content 
-    .main-content
-        form(action = '/species/' + data[0].Id + '/edit' method='POST')
-            div
-                label.add-animal-label Name: 
-                input.add-animal-input(name = 'name' value = data[0].Name)
-                br
-                input(type = 'submit')
+  .container.mt-5
+    .row.justify-content-center
+      .col-md-8
+        .card
+          .card-header.text-center
+            h2.display-4 Edit Species
+          .card-body
+            form(action='/species/' + data[0].Id + '/edit' method='POST')
+              .form-group
+                label(for='name').h5 Name:
+                input.form-control#name(name='name' value=data[0].Name required)
+              .form-group.text-center.mt-3
+                input.btn.btn-primary.btn-lg(type='submit' value='Save Changes')

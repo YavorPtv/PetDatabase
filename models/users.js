@@ -15,6 +15,11 @@ module.exports = function(sequelize, DataTypes) {
     Password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    Role: { // Add this field
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'user' // Default role is 'user'
     }
   }, {
     sequelize,
@@ -26,9 +31,17 @@ module.exports = function(sequelize, DataTypes) {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id" },
+          { name: "Id" },
         ]
       },
+      {
+        name: "username",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "Username" },
+        ]
+      }
     ]
   });
 };

@@ -17,12 +17,18 @@ html
             a(class='nav-link', href='/species') Species
           li(class='nav-item')
             a(class='nav-link', href='/owners') Owners
-          li(class='nav-item')
-            a(class='nav-link', href='/animals/new') Add Animal 
-          li(class='nav-item')
-            a(class='nav-link', href='/species/new') Add Specie
-          li(class='nav-item')
-            a(class='nav-link', href='/owners/new') Add Owner
+          if user && user.Role === 'admin'
+            li(class='nav-item')
+              a(class='nav-link', href='/animals/new') Add Animal 
+            li(class='nav-item')
+              a(class='nav-link', href='/species/new') Add Specie
+            li(class='nav-item')
+              a(class='nav-link', href='/owners/new') Add Owner
+        ul(class='navbar-nav ms-auto')
+          li(clas='nav-item')
+            a(class='nav-link', href='/auth/login') Login
+          li(clas='nav-item')
+            a(class='nav-link', href='/auth/register') Register
 
     block content
     

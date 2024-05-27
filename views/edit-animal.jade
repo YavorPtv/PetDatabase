@@ -1,25 +1,31 @@
 extends layout
 
 block content 
-    .main-content
-        form(action = '/animals/' + data[0].Id + '/edit' method='POST')
-            div
-                label.add-animal-label Name: 
-                input.add-animal-input(name = 'name' value = data[0].Name)
-                br
-                label.add-animal-label SpeciesId: 
-                input.add-animal-input(name = 'speciesId' value = data[0].SpeciesId)
-                br
-                label.add-animal-label OwnerId: 
-                input.add-animal-input(name = 'ownerId' value = data[0].OwnerId)
-                br
-                label.add-animal-label Breed: 
-                input.add-animal-input(name = 'breed' value = data[0].Breed)
-                br
-                label.add-animal-label Age: 
-                input.add-animal-input(name = 'age' value = data[0].Age)
-                br
-                label.add-animal-label Colour: 
-                input.add-animal-input(name = 'colour' value = data[0].Colour)
-                br
-                input(type = 'submit')
+  .container.mt-5
+    .row.justify-content-center
+      .col-md-8
+        .card
+          .card-header.text-center
+            h2.display-4 Edit Animal
+          .card-body
+            form(action='/animals/' + data[0].Id + '/edit' method='POST')
+              .form-group
+                label(for='name').h5.mt-3 Name:
+                input.form-control#name(name='name' value=data[0].Name required)
+              .form-group
+                label(for='speciesId').h5.mt-3 SpeciesId:
+                input.form-control#speciesId(name='speciesId' value=data[0].SpeciesId required)
+              .form-group
+                label(for='ownerId').h5.mt-3 OwnerId:
+                input.form-control#ownerId(name='ownerId' value=data[0].OwnerId required)
+              .form-group
+                label(for='breed').h5.mt-3 Breed:
+                input.form-control#breed(name='breed' value=data[0].Breed required)
+              .form-group
+                label(for='age').h5.mt-3 Age:
+                input.form-control#age(name='age' type='number' min='0' value=data[0].Age required)
+              .form-group
+                label(for='colour').h5.mt-3 Colour:
+                input.form-control#colour(name='colour' value=data[0].Colour required)
+              .form-group.text-center
+                input.btn.btn-primary.btn-lg.mt-3(type='submit' value='Save Changes')

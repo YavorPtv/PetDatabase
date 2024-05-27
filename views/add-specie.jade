@@ -1,10 +1,16 @@
-extends layout 
+extends layout
 
-block content 
-    .main-content
-        form(action = '/species/new' method='POST')
-            div
-                label.add-animal-label Name: 
-                input.add-animal-input(name = 'name')
-                br
-                input(type = 'submit')
+block content
+  .container.mt-5
+    .row.justify-content-center
+      .col-md-8
+        .card
+          .card-header.text-center
+            h2.display-4 Add New Species
+          .card-body
+            form(action='/species/new' method='POST')
+              .form-group.mb-4
+                label(for='name').h5 Name:
+                input.form-control#name(name='name' required)
+              .form-group.text-center
+                input.btn.btn-primary.btn-lg.mt-3(type='submit' value='Add Species')

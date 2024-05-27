@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 const db = require('../models/index');
-const ensureAuthenticated = require('../middleware/auth');
+const ensureAuthenticated = require('../middleware/ensureAuthenticated');
+const ensureAdmin = require('../middleware/ensureAdmin');
 
 /**
  * Get all animals
@@ -21,7 +22,7 @@ router.get('/', async (req, res, next) => {
 /**
  * Show view to add new animal
  */
-router.get('/new', ensureAuthenticated, async function (req, res, next) {
+router.get('/new', ensureAdmin, ensureAuthenticated, async function (req, res, next) {
 	try {
 	  const speciesList = await db.species.findAll(); // Fetch all species
 	  const ownersList = await db.owners.findAll();   // Fetch all owners
@@ -35,7 +36,7 @@ router.get('/new', ensureAuthenticated, async function (req, res, next) {
 /**
  * Add a new animal to the database
  */
-router.post('/new', ensureAuthenticated, function (req, res, next) {
+router.post('/new', ensureAuthenticated, ensureAdmin, function (req, res, next) {
     // Example of adding a new animal
     db.animals.create({
         Name: req.body.name,
@@ -62,7 +63,7 @@ router.get('/:id', async (req, res, next) => {
 	res.render('display-animals', {data: animal});
 });
 
-router.get('/:id/edit', ensureAuthenticated, async (req, res, next) => {
+router.get('/:id/edit', ensureAdmin, ensureAuthenticated, async (req, res, next) => {
 	const animalId = req.params.id;
 
 	const animal = await db.animals.findAll({
@@ -73,7 +74,7 @@ router.get('/:id/edit', ensureAuthenticated, async (req, res, next) => {
 	res.render('edit-animal', {data: animal});
 });
 
-router.post('/:id/edit', ensureAuthenticated, async (req, res, next) => {
+router.post('/:id/edit', ensureAdmin, ensureAuthenticated, async (req, res, next) => {
 	try {
 		const { name, speciesId, ownerId, breed, age, colour } = req.body;
 
@@ -99,7 +100,7 @@ router.post('/:id/edit', ensureAuthenticated, async (req, res, next) => {
 /**
  * Delete an animal
  */
-router.get('/:id/delete', ensureAuthenticated, async (req, res, next) =>{
+router.get('/:id/delete', ensureAdmin, ensureAuthenticated, async (req, res, next) =>{
     await db.animals.destroy({
 		where:{
 			Id: req.params.id,

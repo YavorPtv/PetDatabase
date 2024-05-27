@@ -1,29 +1,35 @@
 extends layout
 
 block content
-  .main-content
-    form(action='/animals/new' method='POST')
-        div
-            label.add-animal-label Name:
-            input.add-animal-input(name='name')
-            br
-            label.add-animal-label SpeciesId:
-            select.add-animal-input(name='speciesId')
-                each species in speciesList
+  .container.mt-5
+    .row.justify-content-center
+      .col-md-8
+        .card
+          .card-header.text-center
+            h2.display-5 Add New Animal
+          .card-body
+            form(action='/animals/new' method='POST')
+              .form-group
+                label(for='name').h5 Name:
+                input.form-control#name(name='name' required)
+              .form-group
+                label(for='speciesId').h5.mt-2 Species:
+                select.form-control#speciesId(name='speciesId' required)
+                  each species in speciesList
                     option(value=`${species.Id}`)= species.Name
-            br
-            label.add-animal-label OwnerId:
-            select.add-animal-input(name='ownerId')
-                each owner in ownersList
+              .form-group
+                label(for='ownerId').h5.mt-2 Owner:
+                select.form-control#ownerId(name='ownerId' required)
+                  each owner in ownersList
                     option(value=`${owner.Id}`)= owner.Name
-            br
-            label.add-animal-label Breed:
-            input.add-animal-input(name='breed')
-            br
-            label.add-animal-label Age:
-            input.add-animal-input(name='age')
-            br
-            label.add-animal-label Colour:
-            input.add-animal-input(name='colour')
-            br
-            input(type='submit')
+              .form-group
+                label(for='breed').h5.mt-2 Breed:
+                input.form-control#breed(name='breed')
+              .form-group
+                label(for='age').h5.mt-2 Age:
+                input.form-control#age(name='age' type='number' min='0')
+              .form-group
+                label(for='colour').h5.mt-2 Colour:
+                input.form-control#colour(name='colour')
+              .form-group.text-center
+                input.btn.btn-primary.btn-lg.mt-3(type='submit' value='Add Animal')

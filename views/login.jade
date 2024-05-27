@@ -3,11 +3,11 @@ extends layout
 block content
   .main-content
     form(action='/auth/login' method='POST')
-      div
-        label Username:
-        input(type='text' name='username' required)
-        br
-        label Password:
-        input(type='password' name='password' required)
-        br
-        input(type='submit' value='Login')
+      .form-group
+        label(for='username').h4 Username:
+        input#username.form-control(type='text' name='username' required)
+      .form-group
+        label(for='password').h4.mt-3 Password:
+        input#password.form-control(type='password' name='password' required)
+      .form-group.form-check
+      button.btn.btn-primary(type='submit') Login
