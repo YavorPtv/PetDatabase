@@ -8,7 +8,8 @@ block content
         th(scope='col') Name
         th(scope='col') Age
         th(scope='col') City
-        th(scope='col' colspan='2' style='text-align: center;') Actions
+        if user && user.Role === 'admin'
+          th(scope='col' colspan='2' style='text-align: center;') Actions
     tbody
       each owner in data
         tr
@@ -16,7 +17,8 @@ block content
           td= owner.Name
           td= owner.Age
           td= owner.City
-          td(style = 'text-align: center;')
-            a(href='/owners/' + owner.Id + '/delete') Delete
-          td(style = 'text-align: center;')
-            a(href='/owners/' + owner.Id + '/edit') Edit
+          if user && user.Role === 'admin'
+            td(style = 'text-align: center;')
+              a(href='/owners/' + owner.Id + '/delete') Delete
+            td(style = 'text-align: center;')
+              a(href='/owners/' + owner.Id + '/edit') Edit

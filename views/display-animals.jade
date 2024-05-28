@@ -11,7 +11,8 @@ block content
         th(scope='col') Breed
         th(scope='col') Age
         th(scope='col') Colour
-        th(scope='col' colspan='2' style='text-align: center;') Actions
+        if user && user.Role === 'admin'
+          th(scope='col' colspan='2' style='text-align: center;') Actions
     tbody
       each animal in data
         tr
@@ -22,7 +23,8 @@ block content
           td= animal.Breed
           td= animal.Age
           td= animal.Colour
-          td(style = 'text-align: center;')
-            a(href='/animals/' + animal.Id + '/delete') Delete
-          td(style = 'text-align: center;')
-            a(href='/animals/' + animal.Id + '/edit') Edit
+          if user && user.Role === 'admin'
+            td(style = 'text-align: center;')
+              a(href='/animals/' + animal.Id + '/delete') Delete
+            td(style = 'text-align: center;')
+              a(href='/animals/' + animal.Id + '/edit') Edit
