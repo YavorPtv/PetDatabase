@@ -25,12 +25,15 @@ html
             li(class='nav-item')
               a(class='nav-link', href='/owners/new') Add Owner
         ul(class='navbar-nav ms-auto')
-          li(clas='nav-item')
-            a(class='nav-link', href='/auth/login') Login
-          li(clas='nav-item')
-            a(class='nav-link', href='/auth/register') Register
+          if user
+            li(class='nav-item')
+              a(class='nav-link', href='/auth/logout') Logout
+          else
+            li(clas='nav-item')
+              a(class='nav-link', href='/auth/login') Login
+            li(clas='nav-item')
+              a(class='nav-link', href='/auth/register') Register
 
     block content
     
     script(src='/static/js/bootstrap.min.js')
-    script(src='/static/javascripts/script-add-pet.js')
