@@ -1,6 +1,7 @@
+// models/animals.js
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('animals', {
+  const Animals = sequelize.define('animals', {
     Id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -46,4 +47,11 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
+
+  Animals.associate = function(models) {
+    Animals.belongsTo(models.species, { as: 'Species', foreignKey: 'SpeciesId' });
+    Animals.belongsTo(models.owners, { as: 'Owner', foreignKey: 'OwnerId' });
+  };
+
+  return Animals;
 };

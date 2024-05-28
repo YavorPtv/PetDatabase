@@ -18,8 +18,8 @@ block content
         tr
           th(scope='row')= animal.Id
           td= animal.Name
-          td= animal.SpeciesId
-          td= animal.OwnerId
+          td= animal.Species ? animal.Species.Name : 'N/A'
+          td= animal.Owner ? animal.Owner.Name : 'N/A'
           td= animal.Breed
           td= animal.Age
           td= animal.Colour
