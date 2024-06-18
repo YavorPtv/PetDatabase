@@ -1,0 +1,63 @@
+extends layout
+
+block content 
+    .container.mt-5
+        .row.justify-content-center
+            .col-md-8
+                .card
+                    .card-header.text-center
+                        h2.display-4 Edit Vet
+                    .card-body
+                        form#vetForm(action='/vets/' + data[0].Id + '/edit' method='POST')
+                            input#hidden-id(type='hidden' value=data[0].Id)
+                            .form-group
+                                label(for='name').h5 Name:
+                                input.form-control#name(name='name' value=data[0].Name required)
+                            .form-group
+                                label(for='license').h5.mt-3 License:
+                                input.form-control#license(name='license' value=data[0].License required)
+                            .form-group
+                                label(for='started').h5.mt-3 Started:
+                                input.form-control#started(name='started' value=data[0].Started type='date' required)
+                            .form-group
+                                label(for='phone').h5.mt-3 Phone:
+                                input.form-control#phone(name='phone' value=data[0].Phone required)
+                            .form-group.text-center.mt-3
+                                input.btn.btn-primary.btn-lg(type='submit' value='Save Changes')
+                            p#errorMessage.text-danger.text-center.mt-2
+    script.
+        console.log('Script block executing');
+        document.getElementById('vetForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = {
+                name: event.target.name.value,
+                license: event.target.license.value,
+                started: event.target.started.value,
+                phone: event.target.phone.value
+            };
+
+            try {
+                console.log('Submitting form data:', formData);
+
+                const vetId = document.getElementById('hidden-id').value;
+                const response = await fetch(`/vets/${vetId}/edit`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    console.log('Form submitted successfully');
+                    window.location.href = '/vets';
+                } else {
+                    const result = await response.json();
+                    document.getElementById('errorMessage').textContent = result.message;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('errorMessage').textContent = 'An unexpected error occurred.';
+            }
+            });

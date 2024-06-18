@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  table.table.table-bordered
+    thead.table-light
+      tr
+        th(scope='col') #
+        th(scope='col') Name
+        th(scope='col') License
+        th(scope='col') Started
+        th(scope='col') Phone
+        if user && user.Role === 'admin'
+          th(scope='col' colspan='2' style='text-align: center;') Actions
+    tbody
+      each vet in data
+        tr
+          th(scope='row')= vet.Id
+          td= vet.Name
+          td= vet.License
+          td= vet.Started
+          td= vet.Phone
+          if user && user.Role === 'admin'
+            td(style = 'text-align: center;')
+              a(href='/vets/' + vet.Id + '/delete') Delete
+            td(style = 'text-align: center;')
+              a(href='/vets/' + vet.Id + '/edit') Edit

@@ -1,7 +1,11 @@
-// models/animals.js
 const Sequelize = require('sequelize');
+const validatePhone = (phoneNumber) => {
+  const phoneValidationRegex = /^(\+359|0)\d{7,9}$/;
+  return phoneValidationRegex.test(phoneNumber);
+}
+
 module.exports = function(sequelize, DataTypes) {
-  const Animals = sequelize.define('animals', {
+  const Vets = sequelize.define('vets', {
     Id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -12,29 +16,28 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    SpeciesId: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    OwnerId: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    Breed: {
+    License: {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    Age: {
-      type: DataTypes.INTEGER,
+    Started: {
+      type: DataTypes.DATEONLY,
       allowNull: false
     },
-    Colour: {
+    Phone: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        validatePhone(value) {
+          if (!validatePhone(value)) {
+            throw new Error('Invalid phone number');
+          }
+        }
+      }
     }
   }, {
     sequelize,
-    tableName: 'animals',
+    tableName: 'vets',
     timestamps: false,
     indexes: [
       {
@@ -44,14 +47,9 @@ module.exports = function(sequelize, DataTypes) {
         fields: [
           { name: "Id" },
         ]
-      },
+      }
     ]
   });
 
-  Animals.associate = function(models) {
-    Animals.belongsTo(models.species, { as: 'Species', foreignKey: 'SpeciesId' });
-    Animals.belongsTo(models.owners, { as: 'Owner', foreignKey: 'OwnerId' });
-  };
-
-  return Animals;
+  return Vets;
 };
