@@ -11,19 +11,34 @@ html
         ul(class='navbar-nav')
           li(class='nav-item')
             a(class='nav-link active', href='/home') Home
-          li(class='nav-item')
-            a(class='nav-link', href='/animals') Animals
-          li(class='nav-item')
-            a(class='nav-link', href='/species') Species
-          li(class='nav-item')
-            a(class='nav-link', href='/owners') Owners
-          if user && user.Role === 'admin'
-            li(class='nav-item')
-              a(class='nav-link', href='/animals/new') Add Animal 
-            li(class='nav-item')
-              a(class='nav-link', href='/species/new') Add Specie
-            li(class='nav-item')
-              a(class='nav-link', href='/owners/new') Add Owner
+          li(class='nav-item dropdown')
+            a(href='/animals' class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false") Animals
+            ul.dropdown-menu
+              li
+                a.dropdown-item(href='/animals') Report
+                if user && user.Role === 'admin'
+                  a.dropdown-item(href='/animals/new') Insert
+          li(class='nav-item dropdown')
+            a(href='/speices' class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false") Species
+            ul.dropdown-menu
+              li
+                a.dropdown-item(href='/species') Report
+                if user && user.Role === 'admin'
+                  a.dropdown-item(href='/species/new') Insert
+          li(class='nav-item dropdown')
+            a(href='/owners' class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false") Owners
+            ul.dropdown-menu
+              li
+                a.dropdown-item(href='/owners') Report
+                if user && user.Role === 'admin'
+                  a.dropdown-item(href='/owners/new') Insert
+          li(class='nav-item dropdown')
+            a(href='/vets' class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false") Vets
+            ul.dropdown-menu
+              li
+                a.dropdown-item(href='/vets') Report
+                if user && user.Role === 'admin'
+                  a.dropdown-item(href='/vets/new') Insert
         ul(class='navbar-nav ms-auto')
           if user
             li(class='nav-item')
@@ -36,4 +51,4 @@ html
 
     block content
     
-    script(src='/static/js/bootstrap.min.js')
+    script(src='/static/js/bootstrap.bundle.min.js')

@@ -12,7 +12,8 @@ var usersRouter = require('./routes/users');
 var animalsRouter = require('./routes/animals');
 var speciesRouter = require('./routes/species');
 var ownersRouter = require('./routes/owners');
-var authRouter = require('./routes/auth'); // Import auth routes
+var authRouter = require('./routes/auth');
+var vetsRouter = require('./routes/vets');
 
 var app = express();
 
@@ -71,6 +72,7 @@ app.use('/animals', animalsRouter);
 app.use('/species', speciesRouter);
 app.use('/owners', ownersRouter);
 app.use('/auth', authRouter); // Use auth routes
+app.use('/vets', vetsRouter); // Use auth routes
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

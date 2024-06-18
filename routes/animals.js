@@ -2,6 +2,7 @@
 var express = require('express');
 var router = express.Router();
 
+const db = require('../models/index');
 const animalService = require('../services/animalService');
 const ensureAuthenticated = require('../middleware/ensureAuthenticated');
 const ensureAdmin = require('../middleware/ensureAdmin');
